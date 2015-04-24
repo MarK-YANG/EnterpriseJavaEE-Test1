@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - bookstore@localhost" uuid="96325ccd-68f8-4592-a9fd-6f890c20728b">
+    <database-info product="MySQL" version="5.6.16" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.29 ( Revision: alexander.soklakov@oracle.com-20140120140810-s44574olh90i6i4l )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="bookstore"/>
+    <table name="Books" schema="" catalog="bookstore" type="TABLE">
+      <column name="isbn" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="author_name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="publisher_name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="publication_year" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="binding" sqlType="VARCHAR" precision="55" scale="0" nullable="true" jdbcType="12"/>
+      <column name="source_numb" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="retail_price" sqlType="DECIMAL" precision="8" scale="2" nullable="true" jdbcType="3"/>
+      <column name="number_on_hand" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="isbn"/>
+    </table>
+    <table name="Sources" schema="" catalog="bookstore" type="TABLE">
+      <column name="source_numb" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="source_name" sqlType="VARCHAR" precision="55" scale="0" nullable="true" jdbcType="12"/>
+      <column name="source_street" sqlType="VARCHAR" precision="55" scale="0" nullable="true" jdbcType="12"/>
+      <column name="source_city" sqlType="VARCHAR" precision="55" scale="0" nullable="true" jdbcType="12"/>
+      <column name="source_state" sqlType="CHAR" precision="2" scale="0" nullable="true" jdbcType="1"/>
+      <column name="source_zip" sqlType="CHAR" precision="5" scale="0" nullable="true" jdbcType="1"/>
+      <column name="source_phone" sqlType="CHAR" precision="12" scale="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="source_numb"/>
+    </table>
+  </data-source>
+</component>
