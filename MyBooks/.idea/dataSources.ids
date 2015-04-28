@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - test@localhost" uuid="e2ce4571-4142-4d62-b692-c361f5d3d526">
+    <database-info product="MySQL" version="5.6.16" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.29 ( Revision: alexander.soklakov@oracle.com-20140120140810-s44574olh90i6i4l )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="test"/>
+    <table name="CUSTOMER" schema="" catalog="test" type="TABLE">
+      <column name="CUSTOMER_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="DISCOUNT_CODE" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="ZIP" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ADDRESSLINE1" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ADDRESSLINE2" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CITY" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="STATE" sqlType="CHAR" precision="2" scale="0" nullable="true" jdbcType="1"/>
+      <column name="PHONE" sqlType="CHAR" precision="12" scale="0" nullable="true" jdbcType="1"/>
+      <column name="FAX" sqlType="CHAR" precision="12" scale="0" nullable="true" jdbcType="1"/>
+      <column name="EMAIL" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CREDIT_LIMIT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="CUSTOMER_ID"/>
+      <foreign-key name="customer_ibfk_2" columns="ZIP" ref-table="MICRO_MARKET" ref-schema="" ref-catalog="test" ref-columns="ZIP_CODE" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="customer_ibfk_1" columns="DISCOUNT_CODE" ref-table="DISCOUNT_CODE" ref-schema="" ref-catalog="test" ref-columns="DISCOUNT_CODE" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="purchase_order_ibfk_1" table="PURCHASE_ORDER" schema="" catalog="test" columns="CUSTOMER_ID"/>
+      <index name="FOREIGNKEY_DISCOUNT_CODE" unique="false" columns="DISCOUNT_CODE"/>
+      <index name="FOREIGNKEY_ZIP" unique="false" columns="ZIP"/>
+    </table>
+    <table name="DISCOUNT_CODE" schema="" catalog="test" type="TABLE">
+      <column name="DISCOUNT_CODE" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="RATE" sqlType="DECIMAL" precision="4" scale="2" nullable="true" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="DISCOUNT_CODE"/>
+      <exported-key name="customer_ibfk_1" table="CUSTOMER" schema="" catalog="test" columns="DISCOUNT_CODE"/>
+    </table>
+    <table name="MANUFACTURER" schema="" catalog="test" type="TABLE">
+      <column name="MANUFACTURER_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="NAME" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ADDRESSLINE1" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ADDRESSLINE2" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CITY" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="STATE" sqlType="CHAR" precision="2" scale="0" nullable="true" jdbcType="1"/>
+      <column name="ZIP" sqlType="CHAR" precision="10" scale="0" nullable="true" jdbcType="1"/>
+      <column name="PHONE" sqlType="VARCHAR" precision="12" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FAX" sqlType="VARCHAR" precision="12" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EMAIL" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="REP" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="MANUFACTURER_ID"/>
+      <exported-key name="product_ibfk_1" table="PRODUCT" schema="" catalog="test" columns="MANUFACTURER_ID"/>
+    </table>
+    <table name="MICRO_MARKET" schema="" catalog="test" type="TABLE">
+      <column name="ZIP_CODE" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="RADIUS" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="AREA_LENGTH" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="AREA_WIDTH" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="ZIP_CODE"/>
+      <exported-key name="customer_ibfk_2" table="CUSTOMER" schema="" catalog="test" columns="ZIP"/>
+    </table>
+    <table name="PRODUCT" schema="" catalog="test" type="TABLE">
+      <column name="PRODUCT_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="MANUFACTURER_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="PRODUCT_CODE" sqlType="CHAR" precision="2" scale="0" nullable="false" jdbcType="1"/>
+      <column name="PURCHASE_COST" sqlType="DECIMAL" precision="12" scale="2" nullable="true" jdbcType="3"/>
+      <column name="QUANTITY_ON_HAND" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="MARKUP" sqlType="DECIMAL" precision="4" scale="2" nullable="true" jdbcType="3"/>
+      <column name="AVAILABLE" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DESCRIPTION" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="PRODUCT_ID"/>
+      <foreign-key name="product_ibfk_2" columns="PRODUCT_CODE" ref-table="PRODUCT_CODE" ref-schema="" ref-catalog="test" ref-columns="PROD_CODE" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="product_ibfk_1" columns="MANUFACTURER_ID" ref-table="MANUFACTURER" ref-schema="" ref-catalog="test" ref-columns="MANUFACTURER_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="purchase_order_ibfk_2" table="PURCHASE_ORDER" schema="" catalog="test" columns="PRODUCT_ID"/>
+      <index name="FOREIGNKEY_MANUFACTURER_ID" unique="false" columns="MANUFACTURER_ID"/>
+      <index name="FOREIGNKEY_PRODUCT_CODE" unique="false" columns="PRODUCT_CODE"/>
+    </table>
+    <table name="PRODUCT_CODE" schema="" catalog="test" type="TABLE">
+      <column name="PROD_CODE" sqlType="CHAR" precision="2" scale="0" nullable="false" jdbcType="1"/>
+      <column name="DISCOUNT_CODE" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="DESCRIPTION" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="PROD_CODE"/>
+      <exported-key name="product_ibfk_2" table="PRODUCT" schema="" catalog="test" columns="PRODUCT_CODE"/>
+    </table>
+    <table name="PURCHASE_ORDER" schema="" catalog="test" type="TABLE">
+      <column name="ORDER_NUM" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CUSTOMER_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="PRODUCT_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="QUANTITY" sqlType="SMALLINT" precision="5" scale="0" nullable="true" jdbcType="5"/>
+      <column name="SHIPPING_COST" sqlType="DECIMAL" precision="12" scale="2" nullable="true" jdbcType="3"/>
+      <column name="SALES_DATE" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="SHIPPING_DATE" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="FREIGHT_COMPANY" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ORDER_NUM"/>
+      <foreign-key name="purchase_order_ibfk_2" columns="PRODUCT_ID" ref-table="PRODUCT" ref-schema="" ref-catalog="test" ref-columns="PRODUCT_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="purchase_order_ibfk_1" columns="CUSTOMER_ID" ref-table="CUSTOMER" ref-schema="" ref-catalog="test" ref-columns="CUSTOMER_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FOREIGNKEY_CUSTOMER_ID" unique="false" columns="CUSTOMER_ID"/>
+      <index name="FOREIGNKEY_PRODUCT_ID" unique="false" columns="PRODUCT_ID"/>
+    </table>
+    <table name="User" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+  </data-source>
+</component>
